@@ -186,7 +186,7 @@ class PropertySearchAPIView(APIView):
             price = -1
         
         if price != -1:
-            queryset = queryset.filter(price_gte=price)
+            queryset = queryset.filter(price__gte=price)
         
         bedrooms = data["bedrooms"]
         if bedrooms == "0+":
@@ -216,7 +216,7 @@ class PropertySearchAPIView(APIView):
         elif bathrooms == "4+":
             bathrooms = 4.0
         
-        queryset = queryset.filter(bathrroms__gte=bathrooms)
+        queryset = queryset.filter(bathrooms__gte=bathrooms)
         catch_phrase = data["catch_phrase"]
         queryset = queryset.filter(description__icontains=catch_phrase)
 
