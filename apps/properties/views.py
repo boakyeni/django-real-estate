@@ -203,6 +203,7 @@ class PropertySearchAPIView(APIView):
             bedrooms = 5
         
         queryset = queryset.filter(bedrooms__gte=bedrooms)
+        print(queryset)
 
         bathrooms = data["bathrooms"]
         if bathrooms == "0+":
@@ -219,9 +220,10 @@ class PropertySearchAPIView(APIView):
         queryset = queryset.filter(bathrooms__gte=bathrooms)
         catch_phrase = data["catch_phrase"]
         queryset = queryset.filter(description__icontains=catch_phrase)
+        print(queryset)
 
         serializer = PropertySerializer(queryset, many=True)
-
+        
         return Response(serializer.data)
 
 
