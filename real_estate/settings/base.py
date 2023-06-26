@@ -9,12 +9,11 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import environ
 from pathlib import Path
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+import environ
+
+env = environ.Env(DEBUG=(bool, False))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -53,7 +52,7 @@ THIRD_PARTY_APPS = [
     "django_countries",
     "phonenumber_field",
     "djoser",
-    "rest_framework_simplejwt"
+    "rest_framework_simplejwt",
 ]
 
 LOCAL_APPS = [
@@ -100,8 +99,6 @@ WSGI_APPLICATION = "real_estate.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-
 
 
 # Password validation
@@ -158,20 +155,20 @@ REST_FRAMEWORK = {
 
 from datetime import timedelta
 
-SIMPLE_JWT={
+SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": (
         "Bearer",
         "JWT",
     ),
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'SIGNING_KEY': env("SIGNING_KEY"),
-    "AUTH_HEADER_NAME":"HTTP_AUTHORIZATION",
-    "AUTH_TOKEN_CLASSES":("rest_framework_simplejwt.tokens.AccessToken",),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=120),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "SIGNING_KEY": env("SIGNING_KEY"),
+    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
 }
 
-DJOSER= {
-    "LOGIN_FIELD":"email",
+DJOSER = {
+    "LOGIN_FIELD": "email",
     "USER_CREATE_PASSWORD_RETYPE": True,
     "USERNAME_CHANGED_EMAIL_CONFIRMATION": True,
     "PASSWORD_CHANGED_EMAIL_CONFIRMATION": True,
@@ -179,15 +176,14 @@ DJOSER= {
     "PASSWORD_RESET_CONFIRM_URL": "password/reset/confirm/{uid}/{token}",
     "SET_PASSWORD_RETYPE": True,
     "PASSWORD_RESET_CONFIRM_RETYPE": True,
-    "USERNAME_RESET_CONFIRM_URL": 'email/reset/confirm/{uid}/{token}',
-    "ACTIVATION_URL":"activate/{uid}/{token}",
+    "USERNAME_RESET_CONFIRM_URL": "email/reset/confirm/{uid}/{token}",
+    "ACTIVATION_URL": "activate/{uid}/{token}",
     "SEND_ACTIVATION_EMAIL": True,
     "SERIALIZERS": {
-        'user_create': 'apps.users.serializers.CreateUserSerializer',
-        'user':'apps.users.serializers.UserSerializer',
-        'current_user': 'apps.users.serializers.UserSerializer',
-        'user_delete': 'djoser.serializers.UserDeleteSerializer',
-        
+        "user_create": "apps.users.serializers.CreateUserSerializer",
+        "user": "apps.users.serializers.UserSerializer",
+        "current_user": "apps.users.serializers.UserSerializer",
+        "user_delete": "djoser.serializers.UserDeleteSerializer",
     },
 }
 
@@ -208,29 +204,26 @@ logging.config.dictConfig(
             "console": {
                 "format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s",
             },
-            "file":{"format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"},
+            "file": {"format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"},
             "django.server": DEFAULT_LOGGING["formatters"]["django.server"],
-
         },
-        "handlers":{
+        "handlers": {
             "console": {
                 "class": "logging.StreamHandler",
                 "formatter": "console",
             },
-            "file":{
+            "file": {
                 "level": "INFO",
                 "class": "logging.FileHandler",
                 "formatter": "file",
-                "filename": "logs/real_estate.log"
+                "filename": "logs/real_estate.log",
             },
             "django.server": DEFAULT_LOGGING["handlers"]["django.server"],
         },
-        "loggers":{
-            "":{"level": "INFO", "handlers":["console", "file"], "propogate":False},
-            "apps":{
-                "level": "INFO", "handlers":["console"], "propogate":False
-            },
+        "loggers": {
+            "": {"level": "INFO", "handlers": ["console", "file"], "propogate": False},
+            "apps": {"level": "INFO", "handlers": ["console"], "propogate": False},
             "django.server": DEFAULT_LOGGING["loggers"]["django.server"],
-        }
+        },
     }
 )
