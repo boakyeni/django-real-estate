@@ -20,6 +20,10 @@ isort = "*"
 djoser = "*"
 djangorestframework-simplejwt = "*"
 pyjwt = "*"
+pytest-django = "*"
+pytest-factoryboy = "*"
+faker = "*"
+pytest-cov = "*"
 
 [dev-packages]
 
