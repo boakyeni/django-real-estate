@@ -7,4 +7,5 @@ const getProperties = async () => {
 
 const propertyAPIService = {getProperties};
 
+
 export default propertyAPIService;
