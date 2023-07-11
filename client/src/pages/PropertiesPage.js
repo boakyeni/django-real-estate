@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import Spinner from '../components/Spinner'
 import {toast} from 'react-toastify'
 import Property from '../components/Property'
-import { getProperties, reset } from '../features/properties/propertySlice'
+import { getProperties } from '../features/properties/propertySlice'
 import Title from '../components/Title'
 
 const PropertiesPage = () => {
