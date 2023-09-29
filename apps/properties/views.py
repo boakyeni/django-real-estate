@@ -155,7 +155,7 @@ def delete_property_api_view(request, slug):
         if delete_operation:
             data["succes"] = "Deletion was successful"
         else:
-            data["failure"] = "Deletion failed"
+            data["failure"] = "Deletion has failed"
         return Response(data=data)
 
 
