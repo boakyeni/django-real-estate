@@ -61,7 +61,7 @@ class ListAgentsPropertiesAPIView(generics.ListAPIView):
     filterset_class = PropertyFilter
     search_fields = ["country", "city"]
     ordering_fields = ["created_at"]
-
+    # recommended way as the queryset attribute is cached
     def get_queryset(self):
         user = self.request.user
         queryset = Property.objects.filter(user=user).order_by("-created_at")
